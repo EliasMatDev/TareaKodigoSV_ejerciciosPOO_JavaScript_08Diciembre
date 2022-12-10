@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Promedio de edades de estudiantes por turno</title>
+</head>
+<body>
+    <h1>Promedio de edades de estudiantes por turno</h1>
+    <p>Ingresa las edades de los estudiantes para cada turno:</p>
+    <!-- Formulario para ingresar las edades de los estudiantes -->
+    <form>
+        <label for="edades_manana">Turno mañana:</label><br>
+        <input type="text" id="edades_manana" name="edades_manana" placeholder="Ejemplo: 20 22 18 19 21"><br><br>
+        <label for="edades_tarde">Turno tarde:</label><br>
+        <input type="text" id="edades_tarde" name="edades_tarde" placeholder="Ejemplo: 21 22 23 24 25 26"><br><br>
+        <label for="edades_noche">Turno noche:</label><br>
+        <input type="text" id="edades_noche" name="edades_noche"
+            placeholder="Ejemplo: 19 20 21 22 23 24 25 26 27 28 29"><br><br>
+        <input type="button" value="Calcular promedios" onclick="calcularPromedios()">
+    </form>
+    <!-- Espacio para mostrar los resultados -->
+    <p id="resultados"></p>
+    <script>
+        function calcularPromedios() {
+            // Obtener las edades de los estudiantes de cada turno
+            let edades_manana = document.getElementById("edades_manana").value;
+            let edades_tarde = document.getElementById("edades_tarde").value;
+            let edades_noche = document.getElementById("edades_noche").value;
+
+            // Separar las edades de cada turno en un arreglo
+            let edades_manana_array = edades_manana.split(" ");
+            let edades_tarde_array = edades_tarde.split(" ");
+            let edades_noche_array = edades_noche.split(" ");
+
+            // Calcular el promedio de edades de cada turno
+            let promedio_manana = 0;
+            for (let i = 0; i < edades_manana_array.length; i++) {
+                promedio_manana += parseInt(edades_manana_array[i]);
+            }
+            promedio_manana = promedio_manana / edades_manana_array.length;
+
+            let promedio_tarde = 0;
+            for (let i = 0; i < edades_tarde_array.length; i++) {
+                promedio_tarde += parseInt(edades_tarde_array[i]);
+            }
+            promedio_tarde = promedio_tarde / edades_tarde_array.length;
+
+            let promedio_noche = 0;
+            for (let i = 0;
+                i < edades_noche_array.length; i++) {
+                promedio_noche += parseInt(edades_noche_array[i]);
+            }
+            promedio_noche = promedio_noche / edades_noche_array.length;
+            // Mostrar los promedios de cada turno
+            document.getElementById("resultados").innerHTML = "Promedio de edades del turno mañana: " + promedio_manana + "<br>" +
+                "Promedio de edades del turno tarde: " + promedio_tarde + "<br>" +
+                "Promedio de edades del turno noche: " + promedio_noche + "<br>";
+
+            // Mostrar el turno con el promedio de edades mayor
+            if (promedio_manana > promedio_tarde && promedio_manana > promedio_noche) {
+                document.getElementById("resultados").innerHTML += "<br>El turno mañana tiene el promedio de edades mayor.";
+            } else if (promedio_tarde > promedio_manana && promedio_tarde > promedio_noche) {
+                document.getElementById("resultados").innerHTML += "<br>El turno tarde tiene el promedio de edades mayor.";
+            } else if (promedio_noche > promedio_manana && promedio_noche > promedio_tarde) {
+                document.getElementById("resultados").innerHTML += "<br>El turno noche tiene el promedio de edades mayor.";
+            } else {
+                document.getElementById("resultados").innerHTML += "<br>Los promedios de edades de los tres turnos son iguales.";
+            }
+        }
+    </script>
+</body>
+</html>

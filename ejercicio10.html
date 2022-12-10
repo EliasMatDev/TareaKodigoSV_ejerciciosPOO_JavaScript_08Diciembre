@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>REFERENCIA DE PESO APROXIMADO</h1>
+    <form>
+        <label>Altura (cm): <input type="number" id="altura"></label>
+        <label>Edad: <input type="number" id="edad"></label>
+        <label>Sexo:
+            <select id="genero">
+                <option value="M">Hombre</option>
+                <option value="F">Mujer</option>
+            </select>
+        </label>
+        <label>Peso actual (kg): <input type="number" id="peso"></label>
+    </form>
+    <br>
+    <button onclick="calculateAproxPeso()">Calcular peso aproximado</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calculateAproxPeso() {
+            // Obtener valores de entrada del usuario
+            const altura = document.getElementById("altura").value;
+            const edad = document.getElementById("edad").value;
+            const genero = document.getElementById("genero").value;
+            const peso = document.getElementById("peso").value;
+
+            // Aplicar fórmula para calcular peso aprox
+            let aproxPeso = 50 + ((altura - 150) / 4) * 3 + (edad - 20) / 4;
+            if (genero === "F") aproxPeso *= 0.9;
+
+            // Mostrar resultado en la página
+            document.getElementById("result").innerText = `Su peso  aproximadamente es ${aproxPeso.toFixed(1)} kg.`;
+        }
+    </script>
+</body>
+</html>

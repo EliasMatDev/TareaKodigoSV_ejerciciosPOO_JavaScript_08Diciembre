@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conversor de temperatura</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100px;
+            height: 30px;
+            font-size: 16px;
+            color: rgb(253, 4, 58);
+            font-weight: bold;
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+            font-size: 16px;
+            color: rgb(0, 110, 255);
+        }
+    </style>
+</head>
+<body>
+    <h1>Conversor de temperatura</h1>
+    <p>Introduce la temperatura en Celsius:</p>
+    <input type="text" id="tempC">
+    <button onclick="convertir()">Convertir</button>
+    <p>La temperatura en Fahrenheit es: <span id="resultado"></span></p>
+    <p>Introduce la temperatura en Fahrenheit:</p>
+    <input type="text" id="tempF">
+    <button onclick="comprobar()">Comprobar</button>
+    <p id="resultado2"></p>
+    <p>Introduce la temperatura en Fahrenheit:</p>
+    <input type="text" id="tempF2">
+    <button onclick="convertirF()">Convertir</button>
+    <p>La temperatura en Celsius es: <span id="resultado3"></span></p>
+    <script>
+        function convertir() {
+            var tempC = document.getElementById('tempC').value;
+            var tempF = (tempC * 9 / 5) + 32;
+            document.getElementById('resultado').innerHTML = tempF;
+        }
+        function comprobar() {
+            var tempF = document.getElementById('tempF').value;
+            if (tempF >= 14 && tempF <= 32) {
+                document.getElementById('resultado2').innerHTML = "Temperatura baja";
+            } else if (tempF >= 32 && tempF <= 68) {
+                document.getElementById('resultado2').innerHTML = "Temperatura adecuada";
+            } else if (tempF >= 68 && tempF <= 96) {
+                document.getElementById('resultado2').innerHTML = "Temperatura alta";
+            } else {
+                document.getElementById('resultado2').innerHTML = "Temperatura desconocida";
+            }
+        }
+        function convertirF() {
+            var tempF2 = document.getElementById('tempF2').value;
+            var tempC2 = (tempF2 - 32) * 5 / 9;
+            document.getElementById('resultado3').innerHTML = tempC2;
+        }
+    </script>
+</body>
+</html>
